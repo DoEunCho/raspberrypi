@@ -1,0 +1,69 @@
+1. MMM-GoogleAssistant 모듈 설치
+	1.1 cd ~/MagicMirror/modules
+	1.2 git clone https://github.com/bugsounet/MMM-GoogleAssistant
+	1.3 cd MMM-GoogleAssistant
+	1.4 npm install	
+	 
+2. 자격증명 설정
+	2.1 OAuth 2.0 credentials 파일 라즈베리파이에 복사(xrdp 혹은 USB 메모리 이용)
+	2.2 파일을 못찾았다면 https://console.cloud.google.com/ - API 및 서비스 - 사용자 인증정보 에서 데스크톱 OAuth json 다운로드
+	2.3 파일을 MMM-GoogleAssistant 폴더에 옮겨주고 이름을 credentials.json 으로 바꿔줌
+	2.4 터미널에서 cd MagicMirror/modules/MMM-GoogleAssistant 
+	2.5 npm run token 입력
+	2.6 Y 입력
+	2.7 인터넷 창이 뜨면 로그인해줌
+	2.8 계속 - 허용 - 허용 눌러줌
+	2.9 코드를 복사해서 Ctrl + Shift + v 로 붙여줌
+	2.10 Done 메시지 보이면 성공!
+
+3. 구글 어시스턴트 모듈 설정
+	3.1 cd ~ 로 홈폴더로 이동
+	3.2 geany MagicMirror/config/config.js
+	3.3 모듈리스트 맨 하단에
+		{
+			module: "MMM-GoogleAssistant",
+			configDeepMerge: true,
+			config: {
+				assistantConfig: {
+				  lang: "ko-KR",
+				  latitude: 37.3460,
+				  longitude: 126.550,
+				},
+			}
+		},
+		추가
+		
+4. gateway 설치
+	4.1 cd ~/MagicMirror/modules
+	4.2 git clone https://github.com/bugsounet/Gateway
+	4.3 cd Gateway
+	4.4 npm install
+	4.5 cd ~
+	4.6 geany MagicMirror/config/config.js
+ 	
+	4.7 다음을 모듈리스트 마지막에 추가
+	{
+		module: 'Gateway'
+	},
+	
+5. EXT-detector 설치
+	5.1 cd ~/MagicMirror/modules
+	5.2 git clone https://github.com/bugsounet/EXT-Detector
+	5.3 cd EXT-Detector
+	5.4 npm install
+	5.5 cd ~
+	5.6 geany MagicMirror/config/config.js
+	5.7 다음을 모듈리스트 마지막에 추가
+	{
+		module: "EXT-Detector",
+		position: "top_left",
+		configDeepMerge: true
+	},
+
+
+6. 매직 미러 실행 하기
+
+	6.1 cd ~/MagicMirror
+	6.2 npm run start
+
+
