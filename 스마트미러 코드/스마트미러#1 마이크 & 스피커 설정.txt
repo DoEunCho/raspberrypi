@@ -1,0 +1,44 @@
+1. $ sudo raspi-config
+	1.1 sudo raspi-config 입력 후 1 system options - S2 Audio 에서 적절한 장치 선택
+		- USB 스피커/사운드카드 사용시 USB
+
+2. $ arecord -l
+ 마이크의 카드번호, 디바이스 번호 적어둠 (카드 3, 디바이스 0)
+
+3. $ aplay -l
+ 스피커의 카드번호, 디바이스 번호 적어둠 (카드 0, 디바이스 0)
+
+4. $ sudo nano .asoundrc 를 입력. 빈화면이 나오면 정상
+
+5. 화면에 아래 내용 붙여넣기, 
+그리고 hw:1, 0 부분을 mic(마이크), speaker(스피커)의 카드번호, 디바이스번호로 수정 후 저장
+
+	pcm.!default {
+		type asym
+		capture.pcm "mic"
+		playback.pcm "speaker"
+	}
+	pcm.mic {
+		type plug
+		slave {
+			pcm "hw:3,0"
+		}
+	}
+	pcm.speaker {
+		type plug
+		slave {
+			pcm "hw:0,0"
+		}
+	} 
+
+6. $ speaker-test -t wav 
+ 스피커가 잘 나오는지 확인(종료 ctrl+c)
+
+7. $ arecord --format=S16_LE --duration=5 --rate=16000 --file-type=raw test.raw 
+ 5초간 마이크에 대고 말하여 테스트 목소리를 저장함
+
+8. $ aplay --format=S16_LE --rate=16000 test.raw
+ 녹음된 소리가 잘 나오는지 확인
+
+9. $ alsamixer
+ 소리가 작거나 크다면 볼륨 조절  

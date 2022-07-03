@@ -1,0 +1,9 @@
+1. MagicMirror2 설치
+
+	1.1 터미널에 bash -c "$(curl -sL https://raw.githubusercontent.com/sdetweil/MagicMirror_scripts/master/raspberry.sh )"
+                 (설치 중 자동실행 설정은 "N"입력, 화면 꺼짐 방지 설정은 "Y" 입력)
+	
+	1.2 cd MagicMirror 
+             
+             1.3 npm run start ( 스마트 미러 화면 종료는 ctrl+q)
+
