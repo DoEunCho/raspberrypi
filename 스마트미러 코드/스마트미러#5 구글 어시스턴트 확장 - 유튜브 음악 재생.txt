@@ -1,0 +1,49 @@
+1. EXT-Alert 설치
+	1.1 cd ~/MagicMirror/modules
+	1.2 git clone https://github.com/bugsounet/EXT-Alert
+	1.3 cd EXT-Alert
+	1.4 npm install
+             1.6 cd ~
+	1.7 geany MagicMirror/config/config.js
+	1.8 모듈리스트 하단에
+	{
+	  module: 'EXT-Alert',
+	  config: {
+		debug: false,
+		ignore: []
+
+	  }
+	},
+	추가
+	
+2. EXT-YouTubeVLC 설치
+	2.1 cd ~/MagicMirror/modules
+	2.2 git clone https://github.com/bugsounet/EXT-YouTubeVLC
+	2.3 cd EXT-YouTubeVLC
+	2.4 npm install
+	2.5 npm run token 으로 토큰 코드 입력
+	2.6 cd ~
+	2.7 geany MagicMirror/config/config.js
+	2.8 모듈리스트 module: "MMM-GoogleAssistant" 부분의 config: 바로 아래줄에
+		stopCommand: "고마워", 추가
+	2.9 longitude : }, 바로 아래줄에
+		recipes: [
+				  "../../EXT-YouTubeVLC/recipe/EXT-YouTubeVLC.js",
+				],
+		추가
+	2.10 모듈리스트 맨 하단에
+		{
+		module: 'EXT-YouTubeVLC',
+		config: {
+			debug: false,
+			useSearch: true,
+			displayHeader: true,
+			minVolume: 30,
+			maxVolume: 100
+			}
+		},
+		추가
+	2.11 파일탐색기를 열고 MagicMirror - modules - EXT-YouTubeVLC - recipe 폴더로 이동
+	2.12 EXT-YouTubeVLC.js 파일 열기
+	2.13 pattern: "youtube (.*)", 부분을 pattern: "유튜브 (.*)", 로 수정
+	
