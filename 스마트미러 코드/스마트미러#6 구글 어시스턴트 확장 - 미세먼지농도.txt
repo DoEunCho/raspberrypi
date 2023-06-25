@@ -1,0 +1,23 @@
+1. 미세먼지 모듈 준비
+ 1.1 https://aqicn.org/search 에 방문해서 도시이름 검색
+ 1.2 주소 중 city/ 뒷부분을 복사해둠
+  
+2. 미세먼지 모듈 설치
+ 2.1 터미널에서 cd ~/MagicMirror/modules
+ 2.2 git clone https://github.com/CFenner/MMM-AirQuality.
+ 2.3 cd MMM-AirQuality
+ 2.4 npm install
+ 2.5 cd ~
+ 2.5 터미널에서 geany MagicMirror/config/config.js
+ 2.6 모듈 추가
+ {
+  module: 'MMM-AirQuality',
+  position: 'top_right',
+  config: {
+   location: 'seoul',
+   lang: "kr"
+  }
+ },
+2.7 cd ~/MagicMirror/
+2.8 npm run start
+	
