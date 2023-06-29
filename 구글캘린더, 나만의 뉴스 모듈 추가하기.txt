@@ -1,0 +1,34 @@
+1. 구글캘린더 연동
+	1.1 크롬을 열어서 오른쪽 위 ::: 클릭 - 캘린더 선택
+	1.2 왼쪽 내 캘린더 아래에 이름 오른쪽 : 클릭 후 설정 및 공유 선택
+	1.3 맨 밑의 비공개 형식 주소 복사해서 기록해둠
+	1.4 라즈베리파이 터미널에서 geany MagicMirror/config/config.js
+	1.5 calander 부분에서 header를 header: "나의 일정", 로 수정
+	1.6 url에는 아까 복사해둔 달력주소를 붙여넣음
+
+2. 달력 추가
+	2.1 터미널에서 cd ~/MagicMirror/modules
+	2.2 git clone https://github.com/PalatinCoder/MMM-MonthCalendar.git
+	2.3 cd MMM-MonthCalendar
+	2.4 npm install
+	2.5 cd ~
+	2.6 geany MagicMirror/config/config.js
+	2.7 calander 모듈 바로 위에 추가
+		{
+			module: 'MMM-MonthCalendar',
+			position: "top_left",
+			header: "",
+			config: {
+				updateDelay: 60,
+				showAdjacentMonths: true
+			}
+		},	
+
+3. 나만의 뉴스 RSS 주소 만들기
+	3.1 https://www.google.co.kr/alerts (구글에서 구글알리미 검색)으로 접속
+	3.2 검색창에 원하는 검색어 입력 후 옵션 더보기
+	3.3 수신 위치를 RSS 피드로 설정
+	3.4 부채모양 오른클릭 - 링크 복사
+	3.5 터미널에서 geany MagicMirror/config/config.js
+	3.6 newsfeed 의 title, url 추가
+	3.7 여러개를 쓰고싶으면 {} 로 구분

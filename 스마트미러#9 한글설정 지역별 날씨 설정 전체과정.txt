@@ -1,0 +1,8 @@
+1. 한글 설정 & 날씨 & hi, sexy 지우기
+	1 https://openweathermap.org/ 에 가입
+	2 로그인 후 계정 - My API Keys 에서 API Key를 복사
+	3 https://drive.google.com/file/d/1k5VJYxn0Mxp74GM3hMHtmIdnPMt09e9t/view?usp=sharing 를 다운받아 지역 검색
+	4 터미널에서 geany MagicMirror/config/config.js
+	5 영상 본문의 config.js.txt 내용을 복사하여 붙여넣기
+	6 API KEY와 지역 ID를 수정
+	7 cd MagicMirror 입력 후 npm start 를 눌러 잘 나오는지 확인
