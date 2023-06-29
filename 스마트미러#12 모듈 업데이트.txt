@@ -1,9 +1,0 @@
-1. 기본 모듈 업데이트
-	1.1 터미널에서 cd MagicMirror 
-	1.2 git pull && npm install --only=prod --omit=dev 를 입력
-
-2. 구글 어시스턴트 모듈 업데이트
-	2.1 터미널에서 cd MagicMirror/modules
-	2.2 cd '업데이트할 모듈'
-	2.3 npm run update
-	2.4 EXT-YoutubeVLC 모듈은 업데이트 후 recipe.js 파일을 수정해줘야 함
