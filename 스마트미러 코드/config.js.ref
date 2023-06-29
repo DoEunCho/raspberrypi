@@ -1,0 +1,205 @@
+/* MagicMirror² Config Sample
+ *
+ * By Michael Teeuw https://michaelteeuw.nl
+ * MIT Licensed.
+ *
+ * For more information on how you can configure this file
+ * see https://docs.magicmirror.builders/configuration/introduction.html
+ * and https://docs.magicmirror.builders/modules/configuration.html
+ *
+ * You can use environment variables using a `config.js.template` file instead of `config.js`
+ * which will be converted to `config.js` while starting. For more information
+ * see https://docs.magicmirror.builders/configuration/introduction.html#enviromnent-variables
+ */
+let config = {
+	address: "localhost",	// Address to listen on, can be:
+	
+	electronOptions: {
+		webPreferences: {
+			webviewTag: true
+		}
+	},
+	 
+							// - "localhost", "127.0.0.1", "::1" to listen on loopback interface
+							// - another specific IPv4/6 to listen on a specific interface
+							// - "0.0.0.0", "::" to listen on any interface
+							// Default, when address config is left out or empty, is "localhost"
+	port: 8080,
+	basePath: "/",			// The URL path where MagicMirror² is hosted. If you are using a Reverse proxy
+					  		// you must set the sub path here. basePath must end with a /
+	ipWhitelist: ["127.0.0.1", "::ffff:127.0.0.1", "::1"],	// Set [] to allow all IP addresses
+															// or add a specific IPv4 of 192.168.1.5 :
+															// ["127.0.0.1", "::ffff:127.0.0.1", "::1", "::ffff:192.168.1.5"],
+															// or IPv4 range of 192.168.3.0 --> 192.168.3.15 use CIDR format :
+															// ["127.0.0.1", "::ffff:127.0.0.1", "::1", "::ffff:192.168.3.0/28"],
+
+	useHttps: false, 		// Support HTTPS or not, default "false" will use HTTP
+	httpsPrivateKey: "", 	// HTTPS private key path, only require when useHttps is true
+	httpsCertificate: "", 	// HTTPS Certificate path, only require when useHttps is true
+
+	language: "ko",
+	locale: "en-US",
+	logLevel: ["INFO", "LOG", "WARN", "ERROR"], // Add "DEBUG" for even more logging
+	timeFormat: 24,
+	units: "metric",
+
+	modules: [
+		{
+			module: "alert",
+		},
+		{
+			module: "updatenotification",
+			position: "top_bar"
+		},
+		{
+			module: "clock",
+			position: "top_left",
+				config:{
+					timezone: "Asia/Seoul"
+				}
+		},
+		{
+			module: "MMM-MonthCalendar",
+			position: "top_left",
+			header: "",
+			config: {
+						updateDelay: 60,
+						showAdjacentMonths: true
+					}
+		},		
+		{
+			module: "calendar",
+			header: "나의 일정",
+			position: "top_right",
+			config: {
+				calendars: [
+					{
+						symbol: "calendar-check",
+						url: "URL입력"
+					}
+				]
+			}
+		},
+/*
+		{
+			module: "compliments",
+			position: "lower_third",
+			config:{
+				//compliments:{
+				//	anytime:["Have a nice day!"
+				//	]
+				//}
+			}
+		},
+*/	
+		{
+			module: "weather",
+			position: "top_right",
+			config: {
+				weatherProvider: "openweathermap",
+				type: "current",
+				location: "Daejeon,KR",
+				locationID: "1835224", //ID from http://bulk.openweathermap.org/sample/city.list.json.gz; unzip the gz file and find your city
+				apiKey: "api키 입력",
+				onlyTemp: true
+			}
+		},
+		{
+			module: "weather",
+			position: "top_right",
+			//header: "Weather Forecast",
+			config: {
+				weatherProvider: "openweathermap",
+				type: "forecast",
+				location: "Daejeon,KR",
+				locationID: "1835224", //ID from http://bulk.openweathermap.org/sample/city.list.json.gz; unzip the gz file and find your city
+				apiKey: "api키 입력"
+			}
+		},
+		
+		{
+			module: "newsfeed",
+			position: "bottom_bar",
+			config: {
+				feeds: [
+					
+					{
+						title: "Google News",
+						url: "https://news.google.com/rss?hl=ko&gl=KR&ceid=KR:ko"
+					}
+
+				],
+				showSourceTitle: true,
+				showPublishDate: true,
+				broadcastNewsFeeds: true,
+				broadcastNewsUpdates: true
+			}
+		},
+		
+		{
+			module: "MMM-GoogleAssistant",
+			configDeepMerge: true,
+			config: {
+				stopCommand: "고마워",
+				assistantConfig: {
+				  lang: "ko-KR",
+				  latitude: 37.3460,
+				  longitude: 126.550,
+				},
+				recipes: [
+				  "../../EXT-MusicPlayer/recipe/EXT-MusicPlayer.js",
+				],
+			
+			}
+		},
+		
+		{
+			module: "Gateway"
+		},
+		
+		{
+			module: "EXT-Detector",
+			position: "top_left",
+			configDeepMerge: true
+		},
+
+/*
+		{
+			module: 'EXT-MusicPlayer',
+			position: 'top_center',
+			config: {
+				debug: false,
+				useUSB: false,
+				musicPath: "/home/pi/Music",
+				checkSubDirectory: false,
+				autoStart: false,
+				minVolume: 50,
+				maxVolume: 100
+			}
+		},
+ */  
+		{
+			module: 'EXT-Browser',
+			config: {
+				debug: false,
+				displayDelay: 60 * 1000,
+				scrollActivate: false,
+				scrollStep: 25,
+				scrollInterval: 1000,
+				scrollStart: 5000
+			}
+		},
+		
+		{
+			module: 'EXT-Alert',
+			config: {
+			debug: false,
+			ignore: []
+			}
+		}
+
+	]
+};
+
+/*************** DO NOT EDIT THE LINE BELOW ***************/
+if (typeof module !== "undefined") {module.exports = config;}
