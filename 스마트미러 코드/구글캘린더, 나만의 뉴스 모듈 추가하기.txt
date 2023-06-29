@@ -5,6 +5,7 @@
 	1.4 라즈베리파이 터미널에서 geany MagicMirror/config/config.js
 	1.5 calander 부분에서 header를 header: "나의 일정", 로 수정
 	1.6 url에는 아까 복사해둔 달력주소를 붙여넣음
+
 2. 달력 추가
 	2.1 터미널에서 cd ~/MagicMirror/modules
 	2.2 git clone https://github.com/PalatinCoder/MMM-MonthCalendar.git
@@ -22,6 +23,7 @@
 				showAdjacentMonths: true
 			}
 		},	
+
 3. 나만의 뉴스 RSS 주소 만들기
 	3.1 https://www.google.co.kr/alerts (구글에서 구글알리미 검색)으로 접속
 	3.2 검색창에 원하는 검색어 입력 후 옵션 더보기

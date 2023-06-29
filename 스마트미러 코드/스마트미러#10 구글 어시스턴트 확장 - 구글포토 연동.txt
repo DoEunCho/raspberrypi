@@ -1,0 +1,28 @@
+1. cd ~/MagicMirror/modules
+2. git clone https://github.com/bugsounet/EXT-GooglePhotos
+3. cd EXT-GooglePhotos
+4. npm install
+5. npm run token
+6. Shift + y 를 눌러 구글포토 API 사용설정
+7. 인터넷 창이 뜨면 로그인
+8. 코드를 붙여넣음
+9. geany MagicMirror/config/config.js
+10. 모듈리스트 하단에
+	{
+		module: 'EXT-GooglePhotos',
+		position: 'top_left',
+		config: {
+			debug: false,
+			displayType: 0,
+			displayDelay: 10 * 1000,   // 사진 갱신시간 ms초 단위
+			displayInfos: true,			// 사진 정보를 표시할지 여부
+			albums: ["행운이", "다람쥐"],
+			sort: "random", // "old", "new"
+			hiResolution: true,
+			timeFormat: "DD/MM/YYYY HH:mm",
+			moduleHeight: 300,
+			moduleWidth: 300
+		}
+	},
+	를 추가
+		
